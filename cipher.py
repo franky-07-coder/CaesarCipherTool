@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
-# Caesar Cipher Logic
 def caesar_cipher(text, shift, decrypt=False):
     result = ""
     if decrypt:
@@ -14,7 +13,6 @@ def caesar_cipher(text, shift, decrypt=False):
             result += char
     return result
 
-# Encryption/Decryption Function
 def process_text(mode):
     text = entry_message.get("1.0", tk.END).strip()
     shift = entry_shift.get()
@@ -34,7 +32,6 @@ def process_text(mode):
     output.delete("1.0", tk.END)
     output.insert(tk.END, result)
 
-# File Handling
 def load_file():
     filepath = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
     if filepath:
@@ -49,7 +46,7 @@ def save_file():
         with open(filepath, "w") as f:
             f.write(output.get("1.0", tk.END).strip())
 
-# GUI Setup
+
 root = tk.Tk()
 root.title("Caesar Cipher Tool")
 root.geometry("700x550")
@@ -59,12 +56,11 @@ title_label = tk.Label(root, text="🔐 Caesar Cipher", font=("Arial", 22, "bold
                        bg="#1e1e2f", fg="#ffffff")
 title_label.pack(pady=15)
 
-# Message Input
+
 entry_message = tk.Text(root, height=8, width=80, font=("Courier", 12),
                         bg="#2c2c3c", fg="#ffffff", insertbackground="white")
 entry_message.pack(pady=10)
 
-# Shift Input
 shift_frame = tk.Frame(root, bg="#1e1e2f")
 shift_frame.pack(pady=5)
 tk.Label(shift_frame, text="Shift Value:", font=("Arial", 12),
@@ -74,7 +70,7 @@ entry_shift = tk.Entry(shift_frame, width=10, font=("Arial", 12),
 entry_shift.insert(0, "3")
 entry_shift.pack(side=tk.LEFT)
 
-# Buttons
+
 frame = tk.Frame(root, bg="#1e1e2f")
 frame.pack(pady=15)
 
@@ -87,7 +83,7 @@ tk.Button(frame, text="📂 Load File", command=load_file,
 tk.Button(frame, text="💾 Save File", command=save_file,
           width=14, height=2, bg="#8e44ad", fg="white").grid(row=0, column=3, padx=10)
 
-# Output Box
+
 output_label = tk.Label(root, text="Output:", font=("Arial", 14, "bold"),
                         bg="#1e1e2f", fg="#ffffff")
 output_label.pack()
